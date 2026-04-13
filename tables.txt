@@ -1,0 +1,49 @@
+==============
+users table 
+
+create table users(
+id serial not null,
+row_id text primary key,
+user_name text not null,
+user_email text not null,
+user_password text not null,
+cr_on timestamp without time zone default now(),
+up_on timestamp without time zone default now()
+);
+
+===========
+services table
+create table services(
+id serial not null,
+row_id text  primary key not null,
+categroies text ,
+test_name text not null,
+price text not null,
+gst text not null,
+cr_on timestamp without time zone default now(),
+up_on timestamp without time zone default now()
+);
+
+================
+bill table 
+
+create table bills(
+id serial not null,
+row_id text primary key,
+patient_name text not null,
+mobile_no text not null,
+age text,
+sex text,
+referred_by text,
+payment_mode text,
+test jsonb not null,
+subtotal text ,
+discount text,
+net_charged text ,
+total_ammount text,
+cr_on timestamp without time zone default now(),
+up_on timestamp without time zone default now()
+);
+
+alter  table bills add column balance text default 0;
+alter table bills RENAME  column total_ammount to recived_ammount;
